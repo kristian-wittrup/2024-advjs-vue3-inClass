@@ -28,7 +28,10 @@ const auth = getAuth(app)
 
 // step 3.5 : Create a reference to the movies collection in Firebase
 const moviesFirebaseCollectionRef = 'movies';
-
 const moviesCollection = collection(db, moviesFirebaseCollectionRef);
 
-export { auth, db, moviesCollection, moviesFirebaseCollectionRef };
+// Actor collection
+const actorsFirebaseCollectionRef = 'actors';
+const actorsCollection = collection(db, actorsFirebaseCollectionRef);
+
+export { auth, db, moviesCollection, moviesFirebaseCollectionRef, actorsFirebaseCollectionRef, actorsCollection };
