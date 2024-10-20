@@ -1,9 +1,22 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import { useUsers } from './modules/useUsers'
+import LoginComponent from './components/LoginComponent.vue';
 
-const { user, login, logout } = useUsers()
+// Modal 
+import ModalComponent from './components/ModalComponent.vue';
+import { ref } from 'vue';
+const showModal = ref(false);
+
+const openModal = () => {
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+//import { useUsers } from './modules/useUsers'
+//const { user, login, logout } = useUsers()
 
 </script>
 
@@ -12,25 +25,60 @@ const { user, login, logout } = useUsers()
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
 
+  
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/actor">Actor</RouterLink>
+        <RouterLink to="/infinitescroll">InfiniteScroll</RouterLink>
+        <RouterLink to="/infinitescroll3d">InfiniteScroll3d</RouterLink>
       </nav>
 
-      <div>
+
+      <!-- Button to open the modal -->
+      <button @click="openModal">Admin</button>
+
+      <!-- Target element for teleport -->
+      <div id="login-portal"></div>
+     
+      
+
+   <!--    <div>
         <button v-if="!user" @click="login('admin@admin.com', '123456')">Login</button>
         <button v-if="user" @click="logout">Logout</button>
         <p v-if="user">Logged in as: {{ user.email }}</p>
-      </div>
+      </div> -->
 
 
     </div>
   </header>
 
   <RouterView />
+
+
+  
+  <!-- Teleport the login component to the header -->
+<!--   <teleport to="#login-portal">
+    <LoginComponent />
+  </teleport> -->
+
+
+  <!-- Teleport the modal to the login-portal -->
+  <teleport to="#login-portal">
+    <ModalComponent v-if="showModal" @close="closeModal">
+      <LoginComponent />
+    </ModalComponent>
+  </teleport>
+
+
+    <!-- Teleport the login component to the end of the body -->
+  <!--     
+    <teleport to="body">
+      <LoginComponent />
+    </teleport> 
+  -->
+
 </template>
 
 <style scoped>

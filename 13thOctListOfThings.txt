@@ -1,0 +1,19 @@
+Changed:
+
+Router/index.js (promise to handle onAuth)
+App.vue - moved all Auth to LoginComponent.vue
+Added LoginCompenent as a teleport to App.vue
+
+Added modal popup
+
+
+Setting up VueUse
+- VueUse useMotion : https://www.youtube.com/watch?v=jRknsy851IM&t=1s
+    - npm i @vueuse/motion
+    - https://motion.vueuse.org/getting-started/introduction
+- 
+- VueUse Hover effect: https://www.youtube.com/watch?v=AVMNjbKdU1M 
+-
+-
+- Infinite Scroll? : https://www.youtube.com/watch?v=4roJKfgPLk4
+    - npm i @vueuse/core
